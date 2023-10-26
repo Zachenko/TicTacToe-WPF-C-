@@ -44,8 +44,10 @@ namespace TicTacToe
                 n1.Text == letter && n5.Text == letter && n9.Text == letter ||
                 n3.Text == letter && n5.Text == letter && n7.Text == letter)
             {
-                
-            }
+                if (letter == "X") alert.Text = "Ty Wygrałeś";
+                else alert.Text = "Ty przegrałeś";
+                isPlaying = false;
+            }    
         }
 
         public void SetX(object sender, RoutedEventArgs e)
@@ -108,6 +110,7 @@ namespace TicTacToe
 
             isPlaying = true;
             finding = true;
+            alert.Text = "";
             x = 0;
         }
     }
