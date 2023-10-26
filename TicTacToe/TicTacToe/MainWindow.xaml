@@ -19,14 +19,26 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <TextBlock Name="n7" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100"/>
-        <TextBlock Name="n8" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="1"/>
-        <TextBlock Name="n9" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="2"/>
-        <TextBlock Name="n4" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Row="1"/>
-        <TextBlock Name="n5" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="1" Grid.Row="1"/>
-        <TextBlock Name="n6" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="2" Grid.Row="1"/>
-        <TextBlock Name="n1" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Row="2"/>
-        <TextBlock Name="n2" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="1" Grid.Row="2"/>
-        <TextBlock Name="n3" MouseDown="SetX" TextWrapping="Wrap" Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="2" Grid.Row="2"/>
+        <TextBlock Name="n7" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100"/>
+        <TextBlock Name="n8" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="1"/>
+        <TextBlock Name="n9" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="2"/>
+        <TextBlock Name="n4" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Row="1"/>
+        <TextBlock Name="n5" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Name="n6" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="2" Grid.Row="1"/>
+        <TextBlock Name="n1" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Row="2"/>
+        <TextBlock Name="n2" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Name="n3" MouseDown="SetX" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="100" Grid.Column="2" Grid.Row="2"/>
+        <Button Click="Button_Click" Content="Restart" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Height="77" Width="130" Grid.Column="2" FontSize="30" FontWeight="Bold"/>
+        <TextBox Grid.Row="3" TextWrapping="Wrap" Text="TextBox" Width="280" Height="77" Grid.ColumnSpan="2" FontSize="60" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="2"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="2"/>
+
     </Grid>
 </Window>

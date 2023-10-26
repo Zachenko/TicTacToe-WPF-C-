@@ -94,5 +94,21 @@ namespace TicTacToe
                 }
             }
         }
+
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int place = 1;
+            int place1 = 0;
+            while (place < 10)
+            {
+                var currLabel = (TextBlock)this.FindName($"n{place++}");
+                currLabel.Text = " ";
+                datePosition[place1++] = 0;
+            }
+
+            isPlaying = true;
+            finding = true;
+            x = 0;
+        }
     }
 }
