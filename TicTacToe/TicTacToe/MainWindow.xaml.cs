@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -30,17 +31,18 @@ namespace TicTacToe
         int[] datePosition = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         bool isPlaying = true;
         bool finding = true;
+        int x = 0;
 
-        public void checkWin()
+        public void checkWin(string letter)
         {
-            if (n1.Text == "X" && n2.Text == "X" && n3.Text == "X" ||
-                n4.Text == "X" && n5.Text == "X" && n6.Text == "X" ||
-                n7.Text == "X" && n8.Text == "X" && n9.Text == "X" ||
-                n1.Text == "X" && n4.Text == "X" && n7.Text == "X" ||
-                n2.Text == "X" && n5.Text == "X" && n8.Text == "X" ||
-                n3.Text == "X" && n6.Text == "X" && n9.Text == "X" ||
-                n1.Text == "X" && n5.Text == "X" && n9.Text == "X" ||
-                n3.Text == "X" && n5.Text == "X" && n7.Text == "X")
+            if (n1.Text == letter && n2.Text == letter && n3.Text == letter ||
+                n4.Text == letter && n5.Text == letter && n6.Text == letter ||
+                n7.Text == letter && n8.Text == letter && n9.Text == letter ||
+                n1.Text == letter && n4.Text == letter && n7.Text == letter ||
+                n2.Text == letter && n5.Text == letter && n8.Text == letter ||
+                n3.Text == letter && n6.Text == letter && n9.Text == letter ||
+                n1.Text == letter && n5.Text == letter && n9.Text == letter ||
+                n3.Text == letter && n5.Text == letter && n7.Text == letter)
             {
                 
             }
@@ -51,6 +53,7 @@ namespace TicTacToe
             string sourceName = ((FrameworkElement)e.Source).Name;
             int labelId = int.Parse(Regex.Match(sourceName, @"\d+").Value);
             var currLabel = (TextBlock)this.FindName(sourceName);
+            finding = true;
 
             if (isPlaying)
             {
@@ -58,7 +61,7 @@ namespace TicTacToe
                 {
                     currLabel.Text = "X";
                     datePosition[labelId - 1] = labelId;
-                    checkWin();
+                    checkWin("X");
 
                     if (isPlaying)
                     {
@@ -66,8 +69,26 @@ namespace TicTacToe
                         {
                             foreach (var i in datePosition)
                             {
-                                Debug.WriteLine(i);
+                                if (i == 0) break;
+                                if (x == 4)
+                                {
+                                    if (datePosition[8] != 0) finding = false;
+                                }
                             }
+
+                            Random random = new Random();
+                            int oPosition = random.Next(1, 9);
+
+                            if (datePosition[oPosition - 1] != 0) continue;
+
+                            x++;
+                            datePosition[oPosition - 1] = oPosition;
+
+                            var oLabel = (TextBlock)this.FindName($"n{oPosition}");
+                            oLabel.Text = "O";
+
+                            checkWin("O");
+                            break;
                         }
                     }
                 }
