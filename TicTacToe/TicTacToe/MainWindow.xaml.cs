@@ -1,26 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TicTacToe
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -33,7 +17,7 @@ namespace TicTacToe
         bool finding = true;
         int x = 0;
 
-        public void checkWin(string letter)
+        public void checkWin(string letter) // funkcja sprawdzająca wszyskie pola
         {
             if (n1.Text == letter && n2.Text == letter && n3.Text == letter ||
                 n4.Text == letter && n5.Text == letter && n6.Text == letter ||
@@ -57,48 +41,51 @@ namespace TicTacToe
             var currLabel = (TextBlock)this.FindName(sourceName);
             finding = true;
 
-            if (isPlaying)
+            if (!isPlaying) return;
+
+            if (datePosition[labelId - 1] == 0)
             {
-                if (datePosition[labelId - 1] == 0)
+                currLabel.Text = "X";
+                datePosition[labelId - 1] = labelId;
+                checkWin("X");
+
+                if (!isPlaying) return;
+
+                while (finding)
                 {
-                    currLabel.Text = "X";
-                    datePosition[labelId - 1] = labelId;
-                    checkWin("X");
-
-                    if (isPlaying)
+                    foreach (var i in datePosition)
                     {
-                        while (finding)
+                        if (i == 0) break;
+                        if (x == 4)
                         {
-                            foreach (var i in datePosition)
-                            {
-                                if (i == 0) break;
-                                if (x == 4)
-                                {
-                                    if (datePosition[8] != 0) finding = false;
-                                }
-                            }
-
-                            Random random = new Random();
-                            int oPosition = random.Next(1, 9);
-
-                            if (datePosition[oPosition - 1] != 0) continue;
-
-                            x++;
-                            datePosition[oPosition - 1] = oPosition;
-
-                            var oLabel = (TextBlock)this.FindName($"n{oPosition}");
-                            oLabel.Text = "O";
-
-                            checkWin("O");
-                            break;
+                            if (datePosition[8] != 0) finding = false;
                         }
                     }
+
+                    Random random = new Random();
+                    int oPosition = random.Next(1, 9);
+
+                    if (datePosition[oPosition - 1] != 0) continue;
+
+                    x++;
+                    datePosition[oPosition - 1] = oPosition;
+
+                    var oLabel = (TextBlock)this.FindName($"n{oPosition}");
+                    oLabel.Text = "O";
+
+                    checkWin("O");
+                    break;
                 }
             }
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
+            isPlaying = true;
+            finding = true;
+            alert.Text = "";
+            x = 0;
+
             int place = 1;
             int place1 = 0;
             while (place < 10)
@@ -107,11 +94,6 @@ namespace TicTacToe
                 currLabel.Text = " ";
                 datePosition[place1++] = 0;
             }
-
-            isPlaying = true;
-            finding = true;
-            alert.Text = "";
-            x = 0;
         }
     }
 }
